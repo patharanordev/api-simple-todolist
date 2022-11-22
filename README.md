@@ -4,14 +4,15 @@ I assume that todo service is in another repo (ref. `./assume-micro-service`). I
 
 ## Features
 
-- [ ] Todo service
+- [x] Todo service
   - [x] microservice
-  - [ ] Create todo task
-  - [ ] Delete todo task
-  - [ ] Update todo task
-  - [ ] Set priority
+  - [x] Create todo task
+  - [x] Delete todo task
+  - [x] Update todo task
+  - [x] Set priority
+  - [x] Task status
 - [x] Middleware/Gateway
-- [ ] In memory
+- [x] ~~In memory~~ Cache in file
 
 ## Usage
 
@@ -22,7 +23,20 @@ docker-compose -f docker-compose.dev.yml down -v && \
 docker-compose -f docker-compose.dev.yml up --build
 ```
 
-## Checking services
+## APIs
+
+### Todo's APIs
+
+Including :
+
+- Create task
+- Get all tasks
+- Get task by ID
+- Update task by ID
+- Remove task by ID
+- Remove all tasks
+
+You can try via Postman script [here](./examples/postman/Todo.postman_collection.json).
 
 ### Healthcheck
 
