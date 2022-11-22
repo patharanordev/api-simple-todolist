@@ -21,3 +21,39 @@ Now I prepare the services for DEV env only :
 docker-compose -f docker-compose.dev.yml down -v && \
 docker-compose -f docker-compose.dev.yml up --build
 ```
+
+## Checking services
+
+### Healthcheck
+
+- Gateway
+
+  ```sh
+  curl --location --request GET 'http://localhost:8580/healthz'
+  ```
+
+  Output :
+
+  ```json
+  {
+      "status": 200,
+      "error": null,
+      "data": "Gateway is OK"
+  }
+  ```
+
+- Todo
+
+  ```sh
+  curl --location --request GET 'http://localhost:8580/todo/healthz'
+  ```
+
+  Output :
+
+  ```json
+  {
+      "status": 200,
+      "error": null,
+      "data": "Todo service is OK"
+  }
+  ```
