@@ -1,0 +1,567 @@
+{
+	"info": {
+		"_postman_id": "545d5bdd-e4f4-482c-9cc8-bee13b060fbd",
+		"name": "Todo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create task",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"task\": \"develop todo api\", \n    \"status\": \"todo\", \n    \"priority\": 0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8580/todo/task?mode=all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8580",
+					"path": [
+						"todo",
+						"task"
+					],
+					"query": [
+						{
+							"key": "mode",
+							"value": "all"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create task",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"task\": \"develop todo api\", \n    \"status\": \"todo\", \n    \"priority\": 0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8580/todo/task?mode=all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8580",
+							"path": [
+								"todo",
+								"task"
+							],
+							"query": [
+								{
+									"key": "mode",
+									"value": "all"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "295"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"127-Ci1D8FQDiPlGzSuX+pilGPDGiwk\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 22 Nov 2022 07:56:56 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 200,\n    \"error\": null,\n    \"data\": {\n        \"task\": \"test\",\n        \"status\": \"in progress\",\n        \"priority\": 1,\n        \"1669102768533\": {\n            \"task\": \"test\",\n            \"status\": \"in progress\",\n            \"priority\": 1\n        },\n        \"1669102769114\": {\n            \"task\": \"test\",\n            \"status\": \"in progress\",\n            \"priority\": 1\n        },\n        \"1669103816619\": {\n            \"task\": \"develop todo api\",\n            \"status\": \"todo\",\n            \"priority\": 0\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get task by task ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8580/todo/task?id=1669103816619",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8580",
+					"path": [
+						"todo",
+						"task"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1669103816619"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get task by task ID",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8580/todo/task?id=1669103816619",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8580",
+							"path": [
+								"todo",
+								"task"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1669103816619"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "91"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"5b-BEUEGJ2I0qExSxYfGZrmGxo8RIM\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 22 Nov 2022 07:58:04 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 200,\n    \"error\": null,\n    \"data\": {\n        \"task\": \"develop todo api\",\n        \"status\": \"todo\",\n        \"priority\": 0\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Update task by ID",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"task\": \"develop todo api\", \n    \"status\": \"in progress\", \n    \"priority\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8580/todo/task?id=1669103816619",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8580",
+					"path": [
+						"todo",
+						"task"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1669103816619"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update task by ID",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"task\": \"develop todo api\", \n    \"status\": \"in progress\", \n    \"priority\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8580/todo/task?id=1669103816619",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8580",
+							"path": [
+								"todo",
+								"task"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1669103816619"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "98"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"62-pwAOXrTHZGurP66ypmYNgCrIJVw\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 22 Nov 2022 08:00:47 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 200,\n    \"error\": null,\n    \"data\": {\n        \"task\": \"develop todo api\",\n        \"status\": \"in progress\",\n        \"priority\": 1\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Remove task by ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8580/todo/task?id=1669103816619",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8580",
+					"path": [
+						"todo",
+						"task"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1669103816619"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Remove task by ID",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8580/todo/task?id=1669103816619",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8580",
+							"path": [
+								"todo",
+								"task"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1669103816619"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "222"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"de-UPwgElHRbnDsc6bDltCuEEKZTPk\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 22 Nov 2022 08:01:35 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 200,\n    \"error\": null,\n    \"data\": {\n        \"task\": \"test\",\n        \"status\": \"in progress\",\n        \"priority\": 1,\n        \"1669102768533\": {\n            \"task\": \"test\",\n            \"status\": \"in progress\",\n            \"priority\": 1\n        },\n        \"1669102769114\": {\n            \"task\": \"test\",\n            \"status\": \"in progress\",\n            \"priority\": 1\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Remove all tasks",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8580/todo/task?mode=all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8580",
+					"path": [
+						"todo",
+						"task"
+					],
+					"query": [
+						{
+							"key": "mode",
+							"value": "all"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Remove all tasks",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8580/todo/task?mode=all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8580",
+							"path": [
+								"todo",
+								"task"
+							],
+							"query": [
+								{
+									"key": "mode",
+									"value": "all"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "37"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"25-fGuYh0hHQYVfNBt0GtpYWT8jxOI\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 22 Nov 2022 08:04:41 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 200,\n    \"error\": null,\n    \"data\": {}\n}"
+				}
+			]
+		},
+		{
+			"name": "Get all tasks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8580/todo/task?mode=all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8580",
+					"path": [
+						"todo",
+						"task"
+					],
+					"query": [
+						{
+							"key": "mode",
+							"value": "all"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get all tasks",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8580/todo/task?mode=all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8580",
+							"path": [
+								"todo",
+								"task"
+							],
+							"query": [
+								{
+									"key": "mode",
+									"value": "all"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "295"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"127-Ci1D8FQDiPlGzSuX+pilGPDGiwk\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 22 Nov 2022 07:58:56 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 200,\n    \"error\": null,\n    \"data\": {\n        \"task\": \"test\",\n        \"status\": \"in progress\",\n        \"priority\": 1,\n        \"1669102768533\": {\n            \"task\": \"test\",\n            \"status\": \"in progress\",\n            \"priority\": 1\n        },\n        \"1669102769114\": {\n            \"task\": \"test\",\n            \"status\": \"in progress\",\n            \"priority\": 1\n        },\n        \"1669103816619\": {\n            \"task\": \"develop todo api\",\n            \"status\": \"todo\",\n            \"priority\": 0\n        }\n    }\n}"
+				}
+			]
+		}
+	]
+}

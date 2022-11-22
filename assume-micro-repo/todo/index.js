@@ -1,21 +1,18 @@
 const express = require("express");
 const bodyParser = require("body-parser")
-const healthcheck = require('./handlers/healthcheck')
-
-// const aboutRouter = require("./routes/about");
-// const weatherRouter = require("./routes/weather");
+const healthcheckHandler = require('./handlers/healthcheck')
+const taskHandler = require('./handlers/task')
 
 const PORT = 3000;
-// const HOST_NAME = "localhost";
 
 const app = express();
+
+app.use(express.json())
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 
-// app.use("/weather", weatherRouter);
-// app.use("/about", aboutRouter);
-
-app.get('/healthz', healthcheck)
+app.get('/healthz', healthcheckHandler)
+app.all('/task', taskHandler)
 
 app.listen(PORT, () => {
   console.log(`Todo service listening on port ${PORT}...`)

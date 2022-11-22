@@ -1,11 +1,11 @@
 const axios = require('axios')
 
-module.exports = async ({ url, port, method, params, data }) => {
+module.exports = async ({ url, method, data }) => {
   let res = { status:502, error:null, data:null }
 
   const response = await axios({
     method: method,
-    url: `${url}:${port}/${params?.handler}`,
+    url,
     data
   })
   .then(response => ({ data:response.data, error:null }))
@@ -16,7 +16,8 @@ module.exports = async ({ url, port, method, params, data }) => {
       console.log(error.response.data);
       console.log(error.response.status);
       console.log(error.response.headers);
-      response.error = error.response
+      response.status = error.response.status
+      response.error = error.response.data
     } else if (error.request) {
       // The request was made but no response was received
       console.log(error.request);
@@ -26,16 +27,19 @@ module.exports = async ({ url, port, method, params, data }) => {
       console.log('Error', error.message);
       response.error = error.message
     }
+
+    return response
   })
 
   if(response.error) {
-    res.status = 502
-    res.error = response.error
+    const hasSubErrObj = response.error && response.error.hasOwnProperty('error')
+    res.status = hasSubErrObj ? response.error.status : response.status
+    res.error = hasSubErrObj ? response.error.error : response.error
     res.data = null
   } else {
     res.status = 200
     res.error = null
-    res.data = response.data
+    res.data = response.data?.data
   }
 
   return res
