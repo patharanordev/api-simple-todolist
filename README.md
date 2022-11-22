@@ -27,7 +27,7 @@ docker-compose -f docker-compose.dev.yml up --build
 
 ### Todo's APIs
 
-Including :
+Including:
 
 - Create task
 - Get all tasks
@@ -36,7 +36,191 @@ Including :
 - Remove task by ID
 - Remove all tasks
 
-You can try via Postman script [here](./examples/postman/Todo.postman_collection.json).
+<details>
+<summary>POST - /todo/task</summary>
+
+### Create task
+
+Body:
+
+```json
+{
+    "task": "develop todo api", 
+    "status": "todo", 
+    "priority": 0
+}
+```
+
+Response :
+
+```json
+{
+    "status": 200,
+    "error": null,
+    "data": {
+        "task": "test",
+        "status": "in progress",
+        "priority": 1,
+        "1669102768533": {
+            "task": "test",
+            "status": "in progress",
+            "priority": 1
+        },
+        "1669102769114": {
+            "task": "test",
+            "status": "in progress",
+            "priority": 1
+        },
+        "1669103816619": {
+            "task": "develop todo api",
+            "status": "todo",
+            "priority": 0
+        }
+    }
+}
+```
+
+</details>
+
+
+<details>
+<summary>GET - /todo/task?mode=all</summary>
+
+### Get all tasks
+
+Response :
+
+```json
+{
+    "status": 200,
+    "error": null,
+    "data": {
+        "task": "test",
+        "status": "in progress",
+        "priority": 1,
+        "1669102768533": {
+            "task": "test",
+            "status": "in progress",
+            "priority": 1
+        },
+        "1669102769114": {
+            "task": "test",
+            "status": "in progress",
+            "priority": 1
+        },
+        "1669103816619": {
+            "task": "develop todo api",
+            "status": "todo",
+            "priority": 0
+        }
+    }
+}
+```
+
+</details>
+
+<details>
+<summary>GET - /todo/task?id=1669103816619</summary>
+
+### Get task by ID
+
+Response :
+
+```json
+{
+    "status": 200,
+    "error": null,
+    "data": {
+        "task": "develop todo api",
+        "status": "todo",
+        "priority": 0
+    }
+}
+```
+
+</details>
+
+
+<details>
+<summary>PATCH - /todo/task?id=1669103816619</summary>
+
+### Update task by ID
+
+Body:
+
+```json
+{
+    "task": "develop todo api", 
+    "status": "in progress", 
+    "priority": 1
+}
+```
+
+Response :
+
+```json
+{
+    "status": 200,
+    "error": null,
+    "data": {
+        "task": "develop todo api",
+        "status": "in progress",
+        "priority": 1
+    }
+}
+```
+
+</details>
+
+<details>
+<summary>DELETE - /todo/task?id=1669103816619</summary>
+
+### Remove task by ID
+
+Response :
+
+```json
+{
+    "status": 200,
+    "error": null,
+    "data": {
+        "task": "test",
+        "status": "in progress",
+        "priority": 1,
+        "1669102768533": {
+            "task": "test",
+            "status": "in progress",
+            "priority": 1
+        },
+        "1669102769114": {
+            "task": "test",
+            "status": "in progress",
+            "priority": 1
+        }
+    }
+}
+```
+
+</details>
+
+<details>
+<summary>DELETE - /todo/task?mode=all</summary>
+
+### Remove all tasks
+
+Response :
+
+```json
+{
+    "status": 200,
+    "error": null,
+    "data": {}
+}
+```
+
+</details>
+
+> You can try via Postman script [here](./examples/postman/Todo.postman_collection.json).
 
 ### Healthcheck
 
@@ -46,7 +230,8 @@ You can try via Postman script [here](./examples/postman/Todo.postman_collection
   curl --location --request GET 'http://localhost:8580/healthz'
   ```
 
-  Output :
+  <details>
+  <summary>Output :</summary>
 
   ```json
   {
@@ -56,13 +241,16 @@ You can try via Postman script [here](./examples/postman/Todo.postman_collection
   }
   ```
 
+  </details>
+
 - Todo
 
   ```sh
   curl --location --request GET 'http://localhost:8580/todo/healthz'
   ```
 
-  Output :
+  <details>
+  <summary>Output :</summary>
 
   ```json
   {
@@ -71,3 +259,5 @@ You can try via Postman script [here](./examples/postman/Todo.postman_collection
       "data": "Todo service is OK"
   }
   ```
+
+  </details>
