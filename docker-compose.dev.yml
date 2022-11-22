@@ -1,0 +1,30 @@
+version: '3.6'
+services:
+
+  apigw:
+    container_name: beedee_gw
+    build:
+      context: ./apigw
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8580:3000"
+    volumes:
+      - ./apigw:/app
+      - /app/node_modules
+    restart: always
+
+  todo:
+    container_name: todo
+    build:
+      context: ./assume-micro-repo/todo
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8581:3000"
+    volumes:
+      - ./assume-micro-repo/todo:/app
+      - /app/node_modules
+    restart: always
+
+networks:
+  default:
+    driver: bridge

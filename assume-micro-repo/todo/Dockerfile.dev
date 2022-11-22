@@ -1,0 +1,15 @@
+# syntax=docker/dockerfile:1
+
+FROM node:14.18.3-alpine
+
+WORKDIR /app
+
+COPY 'package.json' .
+
+RUN npm i
+RUN npm install -g nodemon
+
+COPY . .
+
+EXPOSE 3000
+CMD [ "nodemon" ]
